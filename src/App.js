@@ -1,24 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import Form from "./week21_hw3/App";
+import Gobang from "./week21_hw2/App";
+import TodoList from "./week21_hw1/App";
+import React from "react";
+import styled from "styled-components";
 
 function App() {
+  const PresentWrapper = styled.div`
+    padding: 0px;
+    maggin: 0px;
+  `;
+
+  const [presend, setpresend] = React.useState("");
+
+  const HwOne = () => {
+    return (
+      <button
+        onClick={() => {
+          handleChange("todolist");
+        }}
+      >
+        HW1
+      </button>
+    );
+  };
+
+  const HwTwo = () => {
+    return (
+      <button
+        onClick={() => {
+          handleChange("goband");
+        }}
+      >
+        HW2
+      </button>
+    );
+  };
+
+  const HwThree = () => {
+    return (
+      <button
+        onClick={() => {
+          handleChange("form");
+        }}
+      >
+        HW3
+      </button>
+    );
+  };
+
+  const Present = () => {
+    return (
+      <PresentWrapper>
+        {presend === "todolist" && <TodoList />}
+        {presend === "goband" && <Gobang />}
+        {presend === "form" && <Form />}
+      </PresentWrapper>
+    );
+  };
+  const handleChange = (item) => {
+    setpresend(item);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PresentWrapper>
+      <Present />
+      <HwOne />
+      <HwTwo />
+      <HwThree />
+    </PresentWrapper>
   );
 }
 
